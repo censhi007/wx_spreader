@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun  Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd"> 
+<web-app>
+	<context-param>
+		<param-name>
+            LIQUIBASE_CHANGELOG
+        </param-name>
+        <param-value>
+            liquibase.changelog.xml
+        </param-value>
+	</context-param>
+	<listener>
+        <listener-class>
+            com.liquibase.LiquibaseServletListener
+        </listener-class>
+    </listener> 
+    <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>	
+    <listener> 
+	     <listener-class>
+            org.springframework.context.MyContextLoader
+        </listener-class>
+	</listener>
+	<!-- used to order train-ticket -->
+    <filter>
+	    <description>train Filter</description>
+	    <filter-name>TrFilter</filter-name>
+	    <filter-class>test.travel.filter.TrainFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>TrFilter</filter-name>
+		<url-pattern>/train/*</url-pattern>
+	</filter-mapping>
+  <distributable />
+</web-app>

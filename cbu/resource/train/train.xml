@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd">
+	<bean id="connector" class="com.cbu.util.HTTPConnector"/>
+	<bean id="tr_vcode" class="test.travel.action.Vcode">
+	     <property name="con" ref="connector"></property>
+	</bean>
+	<bean id="tr_login" class="test.travel.action.Login">
+	     <property name="con" ref="connector"></property>
+	</bean>
+	<bean id="tr_query" class="test.travel.action.TransQuery">
+	     <property name="con" ref="connector"></property>
+	</bean>
+	<!-- 单例contextUtil bean 
+	<bean id="contextUtil" class="org.springframework.config.WebConfig" scope="singleton"/>-->
+</beans>
